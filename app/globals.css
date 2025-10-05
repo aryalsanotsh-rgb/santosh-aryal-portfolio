@@ -4,24 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.005 240); /* Updated background color to a more appealing slate-blue tint */
-  --foreground: oklch(0.18 0.01 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 240);
-  --primary: oklch(0.45 0.15 240);
+  /* Darkened background more for better visual depth */
+  --background: oklch(0.92 0.012 240);
+  --foreground: oklch(0.15 0.01 240);
+  --card: oklch(0.99 0.002 240);
+  --card-foreground: oklch(0.15 0.01 240);
+  --popover: oklch(0.99 0.002 240);
+  --popover-foreground: oklch(0.15 0.01 240);
+  --primary: oklch(0.42 0.18 250);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 240);
-  --secondary-foreground: oklch(0.18 0.01 240);
-  --muted: oklch(0.95 0.01 240);
-  --muted-foreground: oklch(0.48 0.02 240);
-  --accent: oklch(0.55 0.18 200);
+  --secondary: oklch(0.93 0.012 240);
+  --secondary-foreground: oklch(0.15 0.01 240);
+  --muted: oklch(0.89 0.018 240);
+  --muted-foreground: oklch(0.45 0.02 240);
+  --accent: oklch(0.5 0.2 200);
   --accent-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.01 240);
-  --input: oklch(0.9 0.01 240);
-  --ring: oklch(0.45 0.15 240);
-  --radius: 0.5rem;
+  --border: oklch(0.86 0.018 240);
+  --input: oklch(0.9 0.012 240);
+  --ring: oklch(0.42 0.18 250);
+  --radius: 0.75rem;
 }
 
 .dark {
@@ -92,4 +93,182 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Added smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Added custom animations and effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Added scroll-triggered animation class */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Enhanced card hover effects with more dramatic transforms */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.card-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, oklch(0.42 0.18 250 / 0.05), oklch(0.5 0.2 200 / 0.05));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15), 0 12px 20px -8px rgb(0 0 0 / 0.1);
+}
+
+.card-hover:hover::before {
+  opacity: 1;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, oklch(0.42 0.18 250), oklch(0.5 0.2 200));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Added button hover effects */
+button,
+a[role="button"] {
+  transition: all 0.3s ease;
+}
+
+button:hover,
+a[role="button"]:hover {
+  transform: translateY(-2px);
+}
+
+button:active,
+a[role="button"]:active {
+  transform: translateY(0);
 }

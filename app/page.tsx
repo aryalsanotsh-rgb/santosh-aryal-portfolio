@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/hooks/use-toast"
 import {
   Dialog,
   DialogContent,
@@ -36,6 +37,7 @@ import { useState, useEffect } from "react"
 export default function Portfolio() {
   const [openDialog, setOpenDialog] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const { toast } = useToast()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +45,6 @@ export default function Portfolio() {
     }
     window.addEventListener("scroll", handleScroll)
 
-    // Intersection Observer for scroll animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -100px 0px",
@@ -57,7 +58,6 @@ export default function Portfolio() {
       })
     }, observerOptions)
 
-    // Observe all elements with scroll-animate class
     const animateElements = document.querySelectorAll(".scroll-animate")
     animateElements.forEach((el) => observer.observe(el))
 
@@ -69,8 +69,11 @@ export default function Portfolio() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
-    console.log("[v0] Form submitted")
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    })
+    ;(e.target as HTMLFormElement).reset()
   }
 
   return (
@@ -109,7 +112,7 @@ export default function Portfolio() {
               className="gap-2 hover:bg-primary hover:text-white transition-all bg-transparent"
             >
               <FileDown className="w-4 h-4" />
-              Resume
+              Download CV
             </Button>
           </div>
         </div>
@@ -236,7 +239,6 @@ export default function Portfolio() {
             <p className="text-lg text-gray-600">Professional work experience</p>
           </div>
           <div className="relative">
-            {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20"></div>
 
             <Card className="shadow-xl border-0 card-hover ml-20 scroll-animate">

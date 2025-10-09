@@ -4,45 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Darkened background more for better visual depth */
-  --background: oklch(0.92 0.012 240);
-  --foreground: oklch(0.15 0.01 240);
-  --card: oklch(0.99 0.002 240);
-  --card-foreground: oklch(0.15 0.01 240);
-  --popover: oklch(0.99 0.002 240);
-  --popover-foreground: oklch(0.15 0.01 240);
-  --primary: oklch(0.42 0.18 250);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.93 0.012 240);
-  --secondary-foreground: oklch(0.15 0.01 240);
-  --muted: oklch(0.89 0.018 240);
-  --muted-foreground: oklch(0.45 0.02 240);
-  --accent: oklch(0.5 0.2 200);
-  --accent-foreground: oklch(0.99 0 0);
-  --border: oklch(0.86 0.018 240);
-  --input: oklch(0.9 0.012 240);
-  --ring: oklch(0.42 0.18 250);
+  /* Changed to purple-based background theme */
+  --background: oklch(0.08 0.04 280);
+  --foreground: oklch(0.95 0.01 280);
+  --card: oklch(0.12 0.035 280);
+  --card-foreground: oklch(0.95 0.01 280);
+  --popover: oklch(0.12 0.035 280);
+  --popover-foreground: oklch(0.95 0.01 280);
+  --primary: oklch(0.65 0.25 280);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.15 0.04 280);
+  --secondary-foreground: oklch(0.95 0.01 280);
+  --muted: oklch(0.2 0.04 280);
+  --muted-foreground: oklch(0.65 0.02 280);
+  --accent: oklch(0.6 0.22 300);
+  --accent-foreground: oklch(0.98 0 0);
+  --border: oklch(0.22 0.04 280);
+  --input: oklch(0.15 0.04 280);
+  --ring: oklch(0.65 0.25 280);
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: oklch(0.15 0.01 250);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.18 0.01 250);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.18 0.01 250);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.65 0.15 250);
-  --primary-foreground: oklch(0.15 0.01 250);
-  --secondary: oklch(0.25 0.02 250);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.25 0.02 250);
-  --muted-foreground: oklch(0.65 0.02 250);
-  --accent: oklch(0.55 0.18 200);
-  --accent-foreground: oklch(0.95 0 0);
-  --border: oklch(0.25 0.02 250);
-  --input: oklch(0.25 0.02 250);
-  --ring: oklch(0.65 0.15 250);
+  --background: oklch(0.12 0.03 250);
+  --foreground: oklch(0.95 0.01 250);
+  --card: oklch(0.16 0.025 250);
+  --card-foreground: oklch(0.95 0.01 250);
+  --popover: oklch(0.16 0.025 250);
+  --popover-foreground: oklch(0.95 0.01 250);
+  --primary: oklch(0.65 0.25 280);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.2 0.03 250);
+  --secondary-foreground: oklch(0.95 0.01 250);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.6 0.02 250);
+  --accent: oklch(0.6 0.22 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0.03 250);
+  --input: oklch(0.2 0.03 250);
+  --ring: oklch(0.65 0.25 280);
 }
 
 @theme inline {
@@ -236,14 +236,16 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, oklch(0.42 0.18 250 / 0.05), oklch(0.5 0.2 200 / 0.05));
+  /* Purple gradient overlay for dark theme */
+  background: linear-gradient(135deg, oklch(0.65 0.25 280 / 0.08), oklch(0.6 0.22 300 / 0.08));
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
 .card-hover:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15), 0 12px 20px -8px rgb(0 0 0 / 0.1);
+  /* Enhanced shadow with purple glow */
+  box-shadow: 0 25px 50px -12px oklch(0 0 0 / 0.5), 0 0 30px oklch(0.65 0.25 280 / 0.2);
 }
 
 .card-hover:hover::before {
@@ -251,13 +253,17 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, oklch(0.42 0.18 250), oklch(0.5 0.2 200));
+  background: linear-gradient(135deg, oklch(0.7 0.25 280), oklch(0.65 0.22 300));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Added button hover effects */
+/* Added glowing effects for dark theme */
+.glow-effect {
+  box-shadow: 0 0 20px oklch(0.65 0.25 280 / 0.3), 0 0 40px oklch(0.65 0.25 280 / 0.1);
+}
+
 button,
 a[role="button"] {
   transition: all 0.3s ease;

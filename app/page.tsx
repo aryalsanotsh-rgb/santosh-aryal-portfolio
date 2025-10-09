@@ -375,17 +375,17 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="projects" className="py-20 bg-gradient-to-br from-white to-indigo-50/30">
+      <section id="projects" className="py-20 bg-gradient-to-br from-purple-950/50 via-background to-purple-900/30">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">Research & Projects</h2>
-            <p className="text-lg text-gray-600">Academic research and project work</p>
+            <h2 className="text-5xl font-bold text-foreground mb-4">Research & Projects</h2>
+            <p className="text-lg text-muted-foreground">Academic research and project work</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Project 1: Urban Planning */}
             <Dialog open={openDialog === "urban"} onOpenChange={(open) => setOpenDialog(open ? "urban" : null)}>
               <DialogTrigger asChild>
-                <Card className="shadow-lg border-0 card-hover cursor-pointer group scroll-animate overflow-hidden">
+                <Card className="shadow-lg border-primary/10 card-hover cursor-pointer group scroll-animate overflow-hidden bg-card">
                   <div className="h-2 bg-gradient-to-r from-teal-500 to-teal-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4 mb-4">
@@ -410,89 +410,94 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700">
-                <button
-                  onClick={() => setOpenDialog(null)}
-                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground text-white"
-                >
-                  <span className="text-2xl">×</span>
-                </button>
-                <div className="grid md:grid-cols-2 gap-8 pt-6">
-                  <div className="space-y-4">
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src="/urban-planning-sustainable-city-development-gis-ma.jpg"
-                        alt="Urban Planning Project"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`gap-2 ${projectLikes.urban ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white"}`}
-                        onClick={() => toggleLike("urban")}
-                      >
-                        <Heart className={`w-4 h-4 ${projectLikes.urban ? "fill-red-400" : ""}`} />
-                        Like
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4" />
-                        Download Report
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white">
-                        <Github className="w-4 h-4" />
-                        View on GitHub
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-6 text-white">
-                    <div>
-                      <h2 className="text-3xl font-bold mb-2">Urban Planning for Sustainable Cities</h2>
-                      <p className="text-purple-300 leading-relaxed">
-                        This research project focused on developing comprehensive planning strategies to enhance urban
-                        infrastructure and address the challenges of rapidly growing cities in Nepal.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
-                      <ul className="space-y-3">
-                        <li className="flex gap-3">
-                          <span className="text-teal-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Investigated planning strategies to enhance infrastructure, land-use zoning, and
-                            transportation networks in rapidly growing urban areas.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-teal-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Applied GIS and data-driven analysis to model and propose solutions for sustainable urban
-                            development.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-teal-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Researched innovative solutions to address key challenges, including traffic congestion,
-                            solid waste management, and the integration of green spaces.
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400" />
-                        ))}
+              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700 p-0">
+                <div className="relative p-8">
+                  <button
+                    onClick={() => setOpenDialog(null)}
+                    className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none text-white z-10"
+                  >
+                    <span className="text-3xl font-light">×</span>
+                  </button>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src="/urban-planning-sustainable-city-development-gis-ma.jpg"
+                          alt="Urban Planning Project"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className={`gap-2 ${projectLikes.urban ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
+                          onClick={() => toggleLike("urban")}
+                        >
+                          <Heart className={`w-4 h-4 ${projectLikes.urban ? "fill-red-400" : ""}`} />
+                          Like
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                          <Download className="w-4 h-4" />
+                          Download Report
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white border-0">
+                          <Github className="w-4 h-4" />
+                          View on GitHub
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-purple-300 text-sm">#urban-planning</span>
-                      <span className="text-purple-300 text-sm">#GIS</span>
-                      <span className="text-purple-300 text-sm">#sustainable-development</span>
+                    <div className="space-y-6 text-white">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-3">Urban Planning for Sustainable Cities</h2>
+                        <p className="text-purple-300 leading-relaxed">
+                          This research project focused on developing comprehensive planning strategies to enhance urban
+                          infrastructure and address the challenges of rapidly growing cities in Nepal.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
+                        <ul className="space-y-3">
+                          <li className="flex gap-3">
+                            <span className="text-teal-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Investigated planning strategies to enhance infrastructure, land-use zoning, and
+                              transportation networks in rapidly growing urban areas.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-teal-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Applied GIS and data-driven analysis to model and propose solutions for sustainable urban
+                              development.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-teal-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Researched innovative solutions to address key challenges, including traffic congestion,
+                              solid waste management, and the integration of green spaces.
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400 transition-all"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-purple-300 text-sm">#urban-planning</span>
+                        <span className="text-purple-300 text-sm">#GIS</span>
+                        <span className="text-purple-300 text-sm">#sustainable-development</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -502,7 +507,7 @@ export default function Portfolio() {
             {/* Project 2: G+5 Building */}
             <Dialog open={openDialog === "building"} onOpenChange={(open) => setOpenDialog(open ? "building" : null)}>
               <DialogTrigger asChild>
-                <Card className="shadow-lg border-0 card-hover cursor-pointer group scroll-animate overflow-hidden">
+                <Card className="shadow-lg border-primary/10 card-hover cursor-pointer group scroll-animate overflow-hidden bg-card">
                   <div className="h-2 bg-gradient-to-r from-indigo-500 to-indigo-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4 mb-4">
@@ -527,91 +532,96 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700">
-                <button
-                  onClick={() => setOpenDialog(null)}
-                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground text-white"
-                >
-                  <span className="text-2xl">×</span>
-                </button>
-                <div className="grid md:grid-cols-2 gap-8 pt-6">
-                  <div className="space-y-4">
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src="/residential-building-structural-design-etabs-analy.jpg"
-                        alt="G+5 Building Project"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`gap-2 ${projectLikes.building ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white"}`}
-                        onClick={() => toggleLike("building")}
-                      >
-                        <Heart className={`w-4 h-4 ${projectLikes.building ? "fill-red-400" : ""}`} />
-                        Like
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4" />
-                        Download Report
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white">
-                        <Github className="w-4 h-4" />
-                        View on GitHub
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-6 text-white">
-                    <div>
-                      <h2 className="text-3xl font-bold mb-2">
-                        Structural Design and Analysis of a G+5 Residential Building
-                      </h2>
-                      <p className="text-purple-300 leading-relaxed">
-                        Comprehensive structural design project for a six-storey residential building with emphasis on
-                        seismic resistance and compliance with Nepal National Building Codes.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
-                      <ul className="space-y-3">
-                        <li className="flex gap-3">
-                          <span className="text-indigo-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Performed comprehensive structural design and load-bearing analysis using ETABS and
-                            STAAD.Pro, focusing on seismic resistance.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-indigo-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Developed detailed cost estimates, bar bending schedules, and reinforcement detailing for
-                            all structural components.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-indigo-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Produced a full set of architectural and structural drawings in AutoCAD, ensuring compliance
-                            with Nepal National Building Codes (NBC).
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400" />
-                        ))}
+              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700 p-0">
+                <div className="relative p-8">
+                  <button
+                    onClick={() => setOpenDialog(null)}
+                    className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none text-white z-10"
+                  >
+                    <span className="text-3xl font-light">×</span>
+                  </button>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src="/residential-building-structural-design-etabs-analy.jpg"
+                          alt="G+5 Building Project"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className={`gap-2 ${projectLikes.building ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
+                          onClick={() => toggleLike("building")}
+                        >
+                          <Heart className={`w-4 h-4 ${projectLikes.building ? "fill-red-400" : ""}`} />
+                          Like
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                          <Download className="w-4 h-4" />
+                          Download Report
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white border-0">
+                          <Github className="w-4 h-4" />
+                          View on GitHub
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-purple-300 text-sm">#structural-design</span>
-                      <span className="text-purple-300 text-sm">#ETABS</span>
-                      <span className="text-purple-300 text-sm">#seismic-analysis</span>
+                    <div className="space-y-6 text-white">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-2">
+                          Structural Design and Analysis of a G+5 Residential Building
+                        </h2>
+                        <p className="text-purple-300 leading-relaxed">
+                          Comprehensive structural design project for a six-storey residential building with emphasis on
+                          seismic resistance and compliance with Nepal National Building Codes.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
+                        <ul className="space-y-3">
+                          <li className="flex gap-3">
+                            <span className="text-indigo-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Performed comprehensive structural design and load-bearing analysis using ETABS and
+                              STAAD.Pro, focusing on seismic resistance.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-indigo-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Developed detailed cost estimates, bar bending schedules, and reinforcement detailing for
+                              all structural components.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-indigo-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Produced a full set of architectural and structural drawings in AutoCAD, ensuring
+                              compliance with Nepal National Building Codes (NBC).
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400 transition-all"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-purple-300 text-sm">#structural-design</span>
+                        <span className="text-purple-300 text-sm">#ETABS</span>
+                        <span className="text-purple-300 text-sm">#seismic-analysis</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -621,7 +631,7 @@ export default function Portfolio() {
             {/* Project 3: Surveying & Hydrology */}
             <Dialog open={openDialog === "surveying"} onOpenChange={(open) => setOpenDialog(open ? "surveying" : null)}>
               <DialogTrigger asChild>
-                <Card className="shadow-lg border-0 card-hover cursor-pointer group scroll-animate overflow-hidden">
+                <Card className="shadow-lg border-primary/10 card-hover cursor-pointer group scroll-animate overflow-hidden bg-card">
                   <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4 mb-4">
@@ -646,82 +656,87 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700">
-                <button
-                  onClick={() => setOpenDialog(null)}
-                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground text-white"
-                >
-                  <span className="text-2xl">×</span>
-                </button>
-                <div className="grid md:grid-cols-2 gap-8 pt-6">
-                  <div className="space-y-4">
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src="/topographic-survey-total-station-hydrological-mode.jpg"
-                        alt="Surveying & Hydrology Project"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`gap-2 ${projectLikes.surveying ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white"}`}
-                        onClick={() => toggleLike("surveying")}
-                      >
-                        <Heart className={`w-4 h-4 ${projectLikes.surveying ? "fill-red-400" : ""}`} />
-                        Like
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4" />
-                        Download Report
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white">
-                        <Github className="w-4 h-4" />
-                        View on GitHub
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-6 text-white">
-                    <div>
-                      <h2 className="text-3xl font-bold mb-2">Surveying & Hydrology Projects</h2>
-                      <p className="text-purple-300 leading-relaxed">
-                        A series of academic projects focused on topographic surveying and hydrological modeling to
-                        understand land development and flood risk assessment.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
-                      <ul className="space-y-3">
-                        <li className="flex gap-3">
-                          <span className="text-blue-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Executed a closed-traverse topographic survey using a Total Station, processing the data to
-                            generate accurate contour maps for a land development proposal.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-blue-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Developed a hydrological model for a local watershed to perform rainfall-runoff analysis and
-                            assess potential flood risks.
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400" />
-                        ))}
+              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700 p-0">
+                <div className="relative p-8">
+                  <button
+                    onClick={() => setOpenDialog(null)}
+                    className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none text-white z-10"
+                  >
+                    <span className="text-3xl font-light">×</span>
+                  </button>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src="/topographic-survey-total-station-hydrological-mode.jpg"
+                          alt="Surveying & Hydrology Project"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className={`gap-2 ${projectLikes.surveying ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
+                          onClick={() => toggleLike("surveying")}
+                        >
+                          <Heart className={`w-4 h-4 ${projectLikes.surveying ? "fill-red-400" : ""}`} />
+                          Like
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                          <Download className="w-4 h-4" />
+                          Download Report
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white border-0">
+                          <Github className="w-4 h-4" />
+                          View on GitHub
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-purple-300 text-sm">#surveying</span>
-                      <span className="text-purple-300 text-sm">#hydrology</span>
-                      <span className="text-purple-300 text-sm">#flood-analysis</span>
+                    <div className="space-y-6 text-white">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-2">Surveying & Hydrology Projects</h2>
+                        <p className="text-purple-300 leading-relaxed">
+                          A series of academic projects focused on topographic surveying and hydrological modeling to
+                          understand land development and flood risk assessment.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
+                        <ul className="space-y-3">
+                          <li className="flex gap-3">
+                            <span className="text-blue-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Executed a closed-traverse topographic survey using a Total Station, processing the data
+                              to generate accurate contour maps for a land development proposal.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-blue-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Developed a hydrological model for a local watershed to perform rainfall-runoff analysis
+                              and assess potential flood risks.
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400 transition-all"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-purple-300 text-sm">#surveying</span>
+                        <span className="text-purple-300 text-sm">#hydrology</span>
+                        <span className="text-purple-300 text-sm">#flood-analysis</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -730,7 +745,7 @@ export default function Portfolio() {
 
             <Dialog open={openDialog === "bridge"} onOpenChange={(open) => setOpenDialog(open ? "bridge" : null)}>
               <DialogTrigger asChild>
-                <Card className="shadow-lg border-0 card-hover cursor-pointer group scroll-animate overflow-hidden">
+                <Card className="shadow-lg border-primary/10 card-hover cursor-pointer group scroll-animate overflow-hidden bg-card">
                   <div className="h-2 bg-gradient-to-r from-orange-500 to-orange-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4 mb-4">
@@ -755,89 +770,94 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700">
-                <button
-                  onClick={() => setOpenDialog(null)}
-                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground text-white"
-                >
-                  <span className="text-2xl">×</span>
-                </button>
-                <div className="grid md:grid-cols-2 gap-8 pt-6">
-                  <div className="space-y-4">
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src="/steel-truss-pedestrian-bridge-structural-design.jpg"
-                        alt="Bridge Design Project"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`gap-2 ${projectLikes.bridge ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white"}`}
-                        onClick={() => toggleLike("bridge")}
-                      >
-                        <Heart className={`w-4 h-4 ${projectLikes.bridge ? "fill-red-400" : ""}`} />
-                        Like
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4" />
-                        Download Report
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white">
-                        <Github className="w-4 h-4" />
-                        View on GitHub
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-6 text-white">
-                    <div>
-                      <h2 className="text-3xl font-bold mb-2">Pedestrian Bridge Design and Analysis</h2>
-                      <p className="text-purple-300 leading-relaxed">
-                        Design project for a 30-meter steel truss pedestrian bridge connecting two urban areas, with
-                        emphasis on structural efficiency and seismic safety.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
-                      <ul className="space-y-3">
-                        <li className="flex gap-3">
-                          <span className="text-orange-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Designed a steel truss bridge structure using SAP2000, optimizing member sizes for load
-                            distribution and material efficiency.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-orange-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Performed seismic analysis considering Nepal's high seismic zone requirements and designed
-                            appropriate foundation systems.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-orange-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Created detailed connection designs, fabrication drawings, and construction methodology
-                            documentation.
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400" />
-                        ))}
+              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700 p-0">
+                <div className="relative p-8">
+                  <button
+                    onClick={() => setOpenDialog(null)}
+                    className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none text-white z-10"
+                  >
+                    <span className="text-3xl font-light">×</span>
+                  </button>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src="/steel-truss-pedestrian-bridge-structural-design.jpg"
+                          alt="Bridge Design Project"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className={`gap-2 ${projectLikes.bridge ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
+                          onClick={() => toggleLike("bridge")}
+                        >
+                          <Heart className={`w-4 h-4 ${projectLikes.bridge ? "fill-red-400" : ""}`} />
+                          Like
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                          <Download className="w-4 h-4" />
+                          Download Report
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white border-0">
+                          <Github className="w-4 h-4" />
+                          View on GitHub
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-purple-300 text-sm">#bridge-design</span>
-                      <span className="text-purple-300 text-sm">#steel-structures</span>
-                      <span className="text-purple-300 text-sm">#SAP2000</span>
+                    <div className="space-y-6 text-white">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-2">Pedestrian Bridge Design and Analysis</h2>
+                        <p className="text-purple-300 leading-relaxed">
+                          Design project for a 30-meter steel truss pedestrian bridge connecting two urban areas, with
+                          emphasis on structural efficiency and seismic safety.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
+                        <ul className="space-y-3">
+                          <li className="flex gap-3">
+                            <span className="text-orange-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Designed a steel truss bridge structure using SAP2000, optimizing member sizes for load
+                              distribution and material efficiency.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-orange-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Performed seismic analysis considering Nepal's high seismic zone requirements and designed
+                              appropriate foundation systems.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-orange-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Created detailed connection designs, fabrication drawings, and construction methodology
+                              documentation.
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400 transition-all"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-purple-300 text-sm">#bridge-design</span>
+                        <span className="text-purple-300 text-sm">#steel-structures</span>
+                        <span className="text-purple-300 text-sm">#SAP2000</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -849,7 +869,7 @@ export default function Portfolio() {
               onOpenChange={(open) => setOpenDialog(open ? "watersupply" : null)}
             >
               <DialogTrigger asChild>
-                <Card className="shadow-lg border-0 card-hover cursor-pointer group scroll-animate overflow-hidden">
+                <Card className="shadow-lg border-primary/10 card-hover cursor-pointer group scroll-animate overflow-hidden bg-card">
                   <div className="h-2 bg-gradient-to-r from-cyan-500 to-cyan-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4 mb-4">
@@ -874,89 +894,94 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700">
-                <button
-                  onClick={() => setOpenDialog(null)}
-                  className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground text-white"
-                >
-                  <span className="text-2xl">×</span>
-                </button>
-                <div className="grid md:grid-cols-2 gap-8 pt-6">
-                  <div className="space-y-4">
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src="/water-supply-system-gravity-fed-pipeline-design.jpg"
-                        alt="Water Supply System Project"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className={`gap-2 ${projectLikes.watersupply ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white"}`}
-                        onClick={() => toggleLike("watersupply")}
-                      >
-                        <Heart className={`w-4 h-4 ${projectLikes.watersupply ? "fill-red-400" : ""}`} />
-                        Like
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
-                        <Download className="w-4 h-4" />
-                        Download Report
-                      </Button>
-                      <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white">
-                        <Github className="w-4 h-4" />
-                        View on GitHub
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="space-y-6 text-white">
-                    <div>
-                      <h2 className="text-3xl font-bold mb-2">Water Supply System Design</h2>
-                      <p className="text-purple-300 leading-relaxed">
-                        Comprehensive design of a gravity-fed water supply system for a rural community of 500
-                        households, ensuring sustainable and reliable water access.
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
-                      <ul className="space-y-3">
-                        <li className="flex gap-3">
-                          <span className="text-cyan-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Designed a complete water supply network including intake, transmission lines, storage
-                            tanks, and distribution system.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-cyan-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Performed hydraulic calculations for pipe sizing, pressure analysis, and flow optimization
-                            using EPANET software.
-                          </span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-cyan-400 mt-1">•</span>
-                          <span className="text-purple-200">
-                            Developed cost estimates, construction schedules, and operation & maintenance plans for
-                            long-term sustainability.
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400" />
-                        ))}
+              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-900 to-purple-950 border-purple-700 p-0">
+                <div className="relative p-8">
+                  <button
+                    onClick={() => setOpenDialog(null)}
+                    className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none text-white z-10"
+                  >
+                    <span className="text-3xl font-light">×</span>
+                  </button>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden shadow-xl">
+                        <Image
+                          src="/water-supply-system-gravity-fed-pipeline-design.jpg"
+                          alt="Water Supply System Project"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className={`gap-2 ${projectLikes.watersupply ? "bg-red-500/20 border-red-500 text-red-400" : "bg-white/10 border-white/20 text-white hover:bg-white/20"}`}
+                          onClick={() => toggleLike("watersupply")}
+                        >
+                          <Heart className={`w-4 h-4 ${projectLikes.watersupply ? "fill-red-400" : ""}`} />
+                          Like
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                          <Download className="w-4 h-4" />
+                          Download Report
+                        </Button>
+                        <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white border-0">
+                          <Github className="w-4 h-4" />
+                          View on GitHub
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="text-purple-300 text-sm">#water-supply</span>
-                      <span className="text-purple-300 text-sm">#hydraulic-design</span>
-                      <span className="text-purple-300 text-sm">#EPANET</span>
+                    <div className="space-y-6 text-white">
+                      <div>
+                        <h2 className="text-3xl font-bold mb-2">Water Supply System Design</h2>
+                        <p className="text-purple-300 leading-relaxed">
+                          Comprehensive design of a gravity-fed water supply system for a rural community of 500
+                          households, ensuring sustainable and reliable water access.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3">Key Features & Highlights</h3>
+                        <ul className="space-y-3">
+                          <li className="flex gap-3">
+                            <span className="text-cyan-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Designed a complete water supply network including intake, transmission lines, storage
+                              tanks, and distribution system.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-cyan-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Performed hydraulic calculations for pipe sizing, pressure analysis, and flow optimization
+                              using EPANET software.
+                            </span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-cyan-400 mt-1">•</span>
+                            <span className="text-purple-200">
+                              Developed cost estimates, construction schedules, and operation & maintenance plans for
+                              long-term sustainability.
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-2">Rate this project</h3>
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className="w-6 h-6 text-yellow-400 cursor-pointer hover:fill-yellow-400 transition-all"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-purple-300 text-sm">#water-supply</span>
+                        <span className="text-purple-300 text-sm">#hydraulic-design</span>
+                        <span className="text-purple-300 text-sm">#EPANET</span>
+                      </div>
                     </div>
                   </div>
                 </div>
